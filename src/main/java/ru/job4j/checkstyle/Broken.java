@@ -3,9 +3,14 @@ package ru.job4j.checkstyle;
 public class Broken {
     private final int sizeOfEmpty = 10;
 
-    public String surname;
+    String name;
+
+    Broken() {
+    }
 
     public static final String ADD = "";
+
+    public String surname;
 
     void echo() {
 
@@ -19,11 +24,4 @@ public class Broken {
 
     void method(int a, int b, int c, int d, int e, int f, int g) {
     }
-
-    String name;
-
-    Broken() {
-
-    }
-
 }
