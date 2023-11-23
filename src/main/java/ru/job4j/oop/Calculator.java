@@ -21,7 +21,7 @@ public class Calculator {
     }
 
     public int sumAllOperation(int d) {
-        return d;
+        return Calculator.sum(d) + Calculator.minus(d) + multiply(d) + divide(d);
     }
 
     public static void main(String[] args) {
@@ -36,7 +36,7 @@ public class Calculator {
         int rsl1 = calc.divide(25);
         System.out.println(rsl1);
         Calculator calc1 = new Calculator();
-        int result2 = calc1.sumAllOperation(result + result1 + rsl + rsl1);
-        System.out.println(result2);
+        int rsl2 = calc1.sumAllOperation(15);
+        System.out.println(rsl2);
     }
 }
