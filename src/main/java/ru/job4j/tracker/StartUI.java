@@ -1,6 +1,5 @@
-package ru.job4j.oop;
+package ru.job4j.tracker;
 
-import ru.job4j.tracker.Item;
 import java.time.format.DateTimeFormatter;
 
 public class StartUI {
