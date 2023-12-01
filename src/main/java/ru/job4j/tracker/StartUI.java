@@ -5,7 +5,6 @@ import java.time.format.DateTimeFormatter;
 public class StartUI {
     Item item = new Item();
 
-
     public static void main(String[] args) {
         Item item = new Item();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
@@ -17,8 +16,8 @@ public class StartUI {
 
     @Override
     public String toString() {
-        return "StartUI{" +
-                "item=" + item +
-                '}';
+        return "StartUI{"
+                + "item=" + item
+                + '}';
     }
 }
