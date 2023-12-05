@@ -7,6 +7,7 @@ public class MockInput implements Input {
     public MockInput(String[] answers) {
         this.answers = answers;
     }
+
     @Override
     public String askStr(String question) {
         return answers[position++];
