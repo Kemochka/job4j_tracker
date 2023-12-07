@@ -1,14 +1,20 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.action;
 
-public class FindAllAction implements UserAction {
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.Item;
+import ru.job4j.tracker.output.Output;
+import ru.job4j.tracker.Tracker;
+
+public class FindAll implements User {
     private final Output out;
 
-    public FindAllAction(Output out) {
+    public FindAll(Output out) {
         this.out = out;
     }
 
     @Override
     public String name() {
+
         return "Показать все заявки";
     }
 
