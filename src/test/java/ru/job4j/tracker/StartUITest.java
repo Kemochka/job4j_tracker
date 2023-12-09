@@ -94,7 +94,7 @@ class StartUITest {
         Tracker tracker = new Tracker();
         Item items = tracker.add(new Item("test"));
         Input in = new Mock(
-                new String[] {"0", "1"}
+                new String[]{"0", "1"}
         );
         User[] actions = {
                 new FindAll(out),
@@ -121,7 +121,7 @@ class StartUITest {
         Tracker tracker = new Tracker();
         Item items = tracker.add(new Item("test"));
         Input in = new Mock(
-                new String[] {"0", String.valueOf(items.getId()), "1"}
+                new String[]{"0", String.valueOf(items.getId()), "1"}
         );
         User[] actions = {
                 new FindById(out),
@@ -148,7 +148,7 @@ class StartUITest {
         Tracker tracker = new Tracker();
         Item items = tracker.add(new Item("test"));
         Input in = new Mock(
-                new String[] {"0", items.getName(), "1"}
+                new String[]{"0", items.getName(), "1"}
         );
         User[] actions = {
                 new FindByName(out),
@@ -165,6 +165,28 @@ class StartUITest {
                         + "Меню:" + ln
                         + "0. Показать заявки по имени" + ln
                         + "1. Завершить программу" + ln
+                        + "=== Завершение программы ===" + ln
+        );
+    }
+
+    @Test
+    void whenInvalidExit() {
+        Output out = new Stub();
+        Input in = new Mock(
+                new String[]{"7", "0"}
+        );
+        Tracker tracker = new Tracker();
+        User[] actions = new User[]{
+                new Exit(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(out.toString()).isEqualTo(
+                "Меню:" + ln
+                        + "0. Завершить программу" + ln
+                        + "Неверный ввод, вы можете выбрать: 0 .. 0" + ln
+                        + "Меню:" + ln
+                        + "0. Завершить программу" + ln
                         + "=== Завершение программы ===" + ln
         );
     }
