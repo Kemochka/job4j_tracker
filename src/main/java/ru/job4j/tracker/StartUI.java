@@ -28,7 +28,6 @@ public class StartUI {
         }
     }
 
-
     private void showMenu(User[] actions) {
         out.println("Меню:");
         for (int index = 0; index < actions.length; index++) {
