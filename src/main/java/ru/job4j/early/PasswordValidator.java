@@ -12,8 +12,7 @@ public class PasswordValidator {
         }
 
         for (String value : FORBIDDEN) {
-            if (password.toLowerCase().contains(value)
-            || password.toUpperCase().contains(value)) {
+            if (password.toLowerCase().contains(value)) {
                 throw new IllegalArgumentException(
                         "Password shouldn't contain substrings: qwerty, 12345, password, admin, user"
                 );
@@ -37,7 +36,7 @@ public class PasswordValidator {
             }
             if (!Character.isLetterOrDigit(symbol)) {
                 hasSpecial = true;
-
+                break;
             }
         }
         if (!hasUpCase) {
