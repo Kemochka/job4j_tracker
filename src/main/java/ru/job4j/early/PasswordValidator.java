@@ -11,8 +11,8 @@ public class PasswordValidator {
             throw new IllegalArgumentException("Password should be length [8, 32]");
         }
 
+        String temp = password.toLowerCase();
         for (String value : FORBIDDEN) {
-            String temp = password.toLowerCase();
             if (temp.contains(value)) {
                 throw new IllegalArgumentException(
                         "Password shouldn't contain substrings: qwerty, 12345, password, admin, user"
