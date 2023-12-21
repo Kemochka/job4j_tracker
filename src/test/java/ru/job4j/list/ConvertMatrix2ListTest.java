@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
-
 class ConvertMatrix2ListTest {
     @Test
     public void when2on2ArrayThenList4() {
