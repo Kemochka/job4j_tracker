@@ -12,11 +12,10 @@ public class UniqueText {
             check.add(org);
         }
         for (String txt : text) {
-            check.contains(txt);
-            if (check.contains(txt) == check.contains(origin)) {
+            if (!check.contains(txt)) {
                 return false;
             }
         }
-        return result;
+        return true;
     }
 }
