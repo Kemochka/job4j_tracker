@@ -21,7 +21,7 @@ public class AppleStore {
         return queue.element().name();
     }
 
-    public String getFirstUpsetCustomer() { //вернуть имя первого клиента, которому сегодня не повезло
+    public String getFirstUpsetCustomer() {
         for (int i = 0; i < queue.size(); i++) {
             if (i < count) {
                 queue.poll();
