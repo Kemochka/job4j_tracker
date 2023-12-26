@@ -15,7 +15,7 @@ public class Order {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumbers(int number) {
         this.number = number;
     }
 
