@@ -5,6 +5,8 @@ import ru.job4j.tracker.Item;
 import ru.job4j.tracker.output.Output;
 import ru.job4j.tracker.Tracker;
 
+import java.util.List;
+
 public class FindAll implements User {
     private final Output out;
 
@@ -21,8 +23,8 @@ public class FindAll implements User {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         out.println("=== Вывод всех заявок ===");
-        Item[] items = tracker.findAll();
-        if (items.length > 0) {
+        List<Item> items = tracker.findAll();
+        if (!items.isEmpty()) {
             for (Item item : items) {
                 out.println(item);
             }

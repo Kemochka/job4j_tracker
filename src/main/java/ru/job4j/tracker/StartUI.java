@@ -8,6 +8,8 @@ import ru.job4j.tracker.input.Console;
 import ru.job4j.tracker.output.ConsoleOutput;
 import ru.job4j.tracker.output.Output;
 
+import java.util.List;
+
 public class StartUI {
     private final Output out;
 
@@ -15,24 +17,24 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, Tracker tracker, User[] actions) {
+    public void init(Input input, Tracker tracker, List<User> actions) {
         boolean run = true;
         while (run) {
             showMenu(actions);
             int select = input.askInt("Выбрать: ");
-            if (select < 0 || select >= actions.length) {
-                out.println("Неверный ввод, вы можете выбрать: 0 .. " + (actions.length - 1));
+            if (select < 0 || select >= actions.size()) {
+                out.println("Неверный ввод, вы можете выбрать: 0 .. " + (actions.size() - 1));
                 continue;
             }
-            User action = actions[select];
+            User action = actions.get(select);
             run = action.execute(input, tracker);
         }
     }
 
-    private void showMenu(User[] actions) {
+    private void showMenu(List<User> actions) {
         out.println("Меню:");
-        for (int index = 0; index < actions.length; index++) {
-            out.println(index + ". " + actions[index].name());
+        for (int index = 0; index < actions.size(); index++) {
+            out.println(index + ". " + actions.get(index).name());
         }
     }
 
@@ -49,6 +51,6 @@ public class StartUI {
                 new FindByName(output),
                 new Exit(output)
         };
-        new StartUI(output).init(input, tracker, actions);
+        new StartUI(output).init(input, tracker, List.of(actions));
     }
 }
