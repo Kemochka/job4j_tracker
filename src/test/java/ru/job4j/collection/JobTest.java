@@ -69,10 +69,10 @@ class JobTest {
     public void whenCompatorByNameAndDescByPrority() {
         Comparator<Job> cmpNamePriority = new JobByName().thenComparing(new JobDescByPriority());
         int rsl = cmpNamePriority.compare(
-                new Job("Kristina", 1),
+                new Job("Victor", 1),
                 new Job("Victor", 2)
         );
-        assertThat(rsl).isLessThan(0);
+        assertThat(rsl).isGreaterThan(0);
     }
 
     @Test
