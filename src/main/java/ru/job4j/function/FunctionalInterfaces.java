@@ -28,6 +28,6 @@ public class FunctionalInterfaces {
     Consumer<String> consumer = (string) -> System.out.println(string);
     consumer.accept(String.valueOf(supplier.get()));
     Function<String, String> function = string -> string.toUpperCase();
-    function.apply(supplier.toString());
+    System.out.println(function.apply("ghjTYUI"));
 }
 }
