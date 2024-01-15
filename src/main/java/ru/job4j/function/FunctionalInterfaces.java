@@ -9,28 +9,27 @@ import java.util.function.*;
 public class FunctionalInterfaces {
     public static void main(String[] args) {
         Map<Integer, String> map = new HashMap<>();
-        BiConsumer<Integer, String> biConsumer = (key, value) -> map.put(key, map.get(key));
-        map.put(1, "one");
-        map.put(2, "two");
-        map.put(3, "three");
-        map.put(4, "four");
-        map.put(5, "five");
-        map.put(6, "six");
-        map.put(7, "seven");
+        BiConsumer<Integer, String> biConsumer = map::put;
+        biConsumer.accept(1, "one");
+        biConsumer.accept(2, "two");
+        biConsumer.accept(3, "three");
+        biConsumer.accept(4, "four");
+        biConsumer.accept(5, "five");
+        biConsumer.accept(6, "six");
+        biConsumer.accept(7, "seven");
         System.out.println(map);
-
-        BiPredicate<Integer, String> biPredicate = (key, value) -> map.containsKey(map.get(key));
-        for (Integer key : map.keySet()) {
-            if (key % 2 == 0 || map.get(key).length() == 4) {
-                System.out.println("key: " + key + " value: " + map.get(key));
+        BiPredicate<Integer, String> biPredicate = (key, value) -> key % 2 == 0 || value.length() == 4;
+        for (Integer i : map.keySet()) {
+            if (biPredicate.test(i, map.get(i))) {
+                System.out.println("key: " + i + " value: " + map.get(i));
             }
         }
             Supplier<List<String>> supplier = () -> new ArrayList<>(map.values());
-            Consumer<String> consumer = (string) -> System.out.println(string);
-            consumer.accept(String.valueOf(supplier.get()));
-            Function<String, String> function = string -> string.toUpperCase();
-        for (String string : map.values()) {
-            System.out.println(string.toUpperCase());
+            Consumer<String> consumer = System.out::println;
+            Function<String, String> function = String::toUpperCase;
+        for (String string : supplier.get()) {
+            consumer.accept(function.apply(string));
+            System.out.println(string);
         }
     }
 }
