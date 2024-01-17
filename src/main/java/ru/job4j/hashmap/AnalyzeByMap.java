@@ -43,16 +43,19 @@ import java.util.*;
         }
 
         public static Label bestStudent(List<Pupil> pupils) {
-            List<Label> label = new ArrayList<>();
+            Label maxLabel = null;
+            double maxScore = Double.MIN_VALUE;
             for (Pupil pupil : pupils) {
                 double totalScore = 0;
                 for (Subject subject : pupil.subjects()) {
                     totalScore += subject.score();
-                    label.add(new Label(pupil.name(), totalScore));
                 }
-                label.sort(Comparator.naturalOrder());
+                if (totalScore > maxScore) {
+                    maxScore = totalScore;
+                    maxLabel = new Label(pupil.name(), totalScore);
+                }
             }
-            return label.get(label.size() - 1);
+            return maxLabel;
         }
 
         public static Label bestSubject(List<Pupil> pupils) {
@@ -62,11 +65,15 @@ import java.util.*;
                     map.put(subject.name(), map.getOrDefault(subject.name(), 0.0) + subject.score());
                 }
             }
-            List<Label> labels = new ArrayList<>();
+            Label maxLabel = null;
+            double maxScore = Double.MIN_VALUE;
             for (String key : map.keySet()) {
-                labels.add(new Label(key, map.get(key)));
-                labels.sort(Comparator.naturalOrder());
+                double score = map.get(key);
+                if (score > maxScore) {
+                    maxScore = score;
+                    maxLabel = new Label(key, score);
+                }
             }
-            return labels.get(labels.size() - 1);
+            return maxLabel;
         }
     }
