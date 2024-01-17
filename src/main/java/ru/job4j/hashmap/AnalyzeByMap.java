@@ -32,7 +32,7 @@ import java.util.*;
             Map<String, Integer> map = new LinkedHashMap<>();
             for (Pupil pupil : pupils) {
                 for (Subject subject : pupil.subjects()) {
-                   map.put(subject.name(), map.getOrDefault(subject.name(), 0) + subject.score());
+                   map.merge(subject.name(), subject.score(), Integer ::sum);
                 }
             }
             List<Label> averageScores = new ArrayList<>();
@@ -62,7 +62,7 @@ import java.util.*;
             Map<String, Double> map = new LinkedHashMap<>();
             for (Pupil pupil : pupils) {
                 for (Subject subject : pupil.subjects()) {
-                    map.put(subject.name(), map.getOrDefault(subject.name(), 0.0) + subject.score());
+                    map.merge(subject.name(), (double) subject.score(), Double ::sum);
                 }
             }
             Label maxLabel = null;
