@@ -32,7 +32,7 @@ import java.util.*;
             Map<String, Integer> map = new LinkedHashMap<>();
             for (Pupil pupil : pupils) {
                 for (Subject subject : pupil.subjects()) {
-                   map.merge(subject.name(), subject.score(), Integer ::sum);
+                   map.merge(subject.name(), subject.score(), Integer::sum);
                 }
             }
             List<Label> averageScores = new ArrayList<>();
@@ -43,7 +43,7 @@ import java.util.*;
         }
 
         public static Label bestStudent(List<Pupil> pupils) {
-            Label maxLabel = null;
+            String bestStudentName = "";
             double maxScore = Double.MIN_VALUE;
             for (Pupil pupil : pupils) {
                 double totalScore = 0;
@@ -52,17 +52,17 @@ import java.util.*;
                 }
                 if (totalScore > maxScore) {
                     maxScore = totalScore;
-                    maxLabel = new Label(pupil.name(), totalScore);
+                    bestStudentName = pupil.name();
                 }
             }
-            return maxLabel;
+            return new Label(bestStudentName, maxScore);
         }
 
         public static Label bestSubject(List<Pupil> pupils) {
             Map<String, Double> map = new LinkedHashMap<>();
             for (Pupil pupil : pupils) {
                 for (Subject subject : pupil.subjects()) {
-                    map.merge(subject.name(), (double) subject.score(), Double ::sum);
+                    map.merge(subject.name(), (double) subject.score(), Double::sum);
                 }
             }
             Label maxLabel = null;
