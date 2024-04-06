@@ -1,9 +1,9 @@
 package ru.job4j.tracker.action;
 
+import ru.job4j.tracker.Store;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.output.Output;
-import ru.job4j.tracker.Tracker;
 
 public class Replace implements User {
     private final Output out;
@@ -18,7 +18,7 @@ public class Replace implements User {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         out.println("=== Редактирование заявки ===");
         int id = input.askInt("Введите id: ");
         String name = input.askStr("Введите имя: ");
